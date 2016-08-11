@@ -51,4 +51,4 @@ bower_components
 .idea/
 WebRTC-p2p-handshake.iml
 node_modules/
-private/config.json
+private/
