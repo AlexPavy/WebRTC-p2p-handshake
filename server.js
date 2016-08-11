@@ -19,16 +19,7 @@ httpServer.listen(port);
 
 // ----------------------------------------------------------------------------------------
 
-// Create a server for handling websocket calls
-var io = require('socket.io').listen(httpServer);
+var messaging = require("./service/messaging");
+messaging.start(httpServer);
 
-
-io.sockets.on('connection', function (socket) {
-    console.log('A client is connected!');
-    socket.on('message', function(message) {
-        console.log('received: %s', message);
-        socket.broadcast.emit('message', message);
-    });
-});
-
-console.log('Server running. Visit https://localhost:' + port);
+console.log('Server running. Visit http://localhost:' + port);

@@ -7,6 +7,37 @@
 </head>
 
 <body>
+
+<h3>Messaging with database</h3>
+
+<form>
+    <input type="text" title="User Name" id = "userName">
+    <input type="button" id="registerButton" onclick="register()" value="Register">
+</form>
+
+<br/>
+<br/>
+
+<form>
+    <input type="text" title="User Id" id = "remoteUserId">
+    <input type="button" id="sendMessageButton" onclick="sendMessage()" value="Send Message to user by UUID">
+</form>
+
+<br/>
+<br/>
+
+<input type="button" id="getUsersButton" onclick="getUsers()" value="Get users">
+<br/>
+<br/>
+<input type="button" id="deleteUsers" onclick="deleteUsers()" value="Delete users">
+
+<br/>
+<br/>
+<hr/>
+<br/>
+
+<h3>WebRTC</h3>
+
 <video id="localVideo" autoplay muted style="width:40%;"></video>
 <video id="remoteVideo" autoplay style="width:40%;"></video>
 

@@ -2,6 +2,69 @@ var localVideo, remoteVideo;
 var peerConnection, socket, localStream;
 var uuid;
 
+function preparePage() {
+    uuid = uuid();
+
+    setVideoElements();
+
+    socket = io.connect('http://localhost:8080');
+    socket.on('message', function(message) {
+        gotMessageFromServer(message);
+    });
+    socket.on('dbmessage', function(dbmessage) {
+        gotDBMessageFromServer(dbmessage);
+    });
+    socket.on('user_message', function(user_message) {
+        gotUserMessage(user_message);
+    });
+}
+
+// *** with users database ***
+
+function register() {
+    socket.emit('dbmessage',
+        JSON.stringify({
+            'uuid': uuid,
+            "userName" : document.getElementById('userName').value,
+            "goal" : "register"
+        }));
+}
+
+function sendMessage() {
+    socket.emit('dbmessage',
+        JSON.stringify({
+            'uuid': uuid,
+            "remoteUserId" : document.getElementById('remoteUserId').value,
+            "goal" : "contactUser"
+        }));
+}
+
+function getUsers() {
+    socket.emit('dbmessage',
+        JSON.stringify({
+            'uuid': uuid,
+            "goal" : "getUsers"
+        }));
+}
+
+function deleteUsers() {
+    socket.emit('dbmessage',
+        JSON.stringify({
+            'uuid': uuid,
+            "goal" : "deleteUsers"
+        }));
+}
+
+function gotDBMessageFromServer(dbmessage) {
+    console.log("dbmessage response", dbmessage);
+}
+
+function gotUserMessage(user_message) {
+    console.log("Message from another user", user_message);
+}
+
+// *** webRTC methods ***
+
 var peerConnectionConfig = {
     'iceServers': [
         {'urls': 'stun:stun.services.mozilla.com'},
@@ -17,17 +80,6 @@ var activate = {
 function setVideoElements() {
     localVideo = document.getElementById('localVideo');
     remoteVideo = document.getElementById('remoteVideo');
-}
-
-function preparePage() {
-    uuid = uuid();
-
-    setVideoElements();
-
-    socket = io.connect('http://localhost:8080');
-    socket.on('message', function(message) {
-        gotMessageFromServer(message);
-    });
 }
 
 function startMedia() {
