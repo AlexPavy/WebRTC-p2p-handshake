@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="client.js"></script>
+</head>
+
+<body>
+<video id="localVideo" autoplay muted style="width:40%;"></video>
+<video id="remoteVideo" autoplay style="width:40%;"></video>
+
+<br/>
+
+<input type="button" id="start" onclick="startMedia()" value="Start Video">
+<input type="button" id="stop" onclick="stop()" value="Stop Video">
+
+</body>
+</html>
