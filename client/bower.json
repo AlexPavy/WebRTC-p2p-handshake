@@ -1,0 +1,21 @@
+{
+  "name": "test-webRTC",
+  "main": "index.html",
+  "homepage": "https://github.com/AlexPavy/WebRTC-p2p-handshake",
+  "authors": [
+    "Alex Pavy <alex.g.pavy@gmail.com>"
+  ],
+  "description": "test-webRTC",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "^1.4.8"
+  }
+}
