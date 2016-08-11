@@ -1,5 +1,7 @@
-Solution inspired from :
+Solution uses help from :
 [a-dead-simple-webrtc-example](https://shanetully.com/2014/09/a-dead-simple-webrtc-example/)
+[mlab for MongoDB](https://mlab.com)
+
 
 Creating a messaging server
 
